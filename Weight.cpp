@@ -14,3 +14,11 @@
 //constants
 const float Weight::KILOS_IN_A_POUND = 0.453592;
 const float Weight::SLUGS_IN_A_POUND = 0.031081;
+
+Weight::Weight() {}
+Weight::Weight (float newWeight){}
+Weight::Weight (UnitOfWeight newUnitOfWeight) noexcept{}
+Weight::Weight (float newWeight, UnitOfWeight newUnitOfWeight){}
+Weight::Weight (float newWeight, float newMaxWeight){}
+Weight::Weight (UnitOfWeight newUnitOfWeight, float newMaxWeight){}
+Weight::Weight (float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight){}

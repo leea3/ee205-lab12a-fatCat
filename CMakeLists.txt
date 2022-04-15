@@ -5,6 +5,4 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
-add_executable(ee205_lab12a_fatCat
-        Weight.cpp
-        Weight.h)
+add_executable(ee205_lab12a_fatCat main.cpp Weight.cpp Weight.h)

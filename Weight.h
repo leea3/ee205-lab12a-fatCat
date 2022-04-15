@@ -25,4 +25,13 @@ public:
     static const std::string KILO_LABEL;
     static const std::string SLUG_LABEL;
 
+public: //constructors
+    Weight();
+    Weight (float newWeight);
+    Weight (UnitOfWeight newUnitOfWeight) noexcept;
+    Weight (float newWeight, UnitOfWeight newUnitOfWeight);
+    Weight (float newWeight, float newMaxWeight);
+    Weight (UnitOfWeight newUnitOfWeight, float newMaxWeight);
+    Weight (float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight);
+
 };
