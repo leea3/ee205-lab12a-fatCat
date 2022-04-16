@@ -36,17 +36,11 @@ private:
 
 public: //constructors
     Weight();
-
     Weight(float newWeight);
-
     Weight(UnitOfWeight newUnitOfWeight) noexcept;
-
     Weight(float newWeight, UnitOfWeight newUnitOfWeight);
-
     Weight(float newWeight, float newMaxWeight);
-
     Weight(UnitOfWeight newUnitOfWeight, float newMaxWeight);
-
     Weight(float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight);
 
 public: //static methods
@@ -64,7 +58,18 @@ public: //getters and setters
     void setWeight(float newWeight, UnitOfWeight weightUnit );
     void setMaxWeight(float maxWeight);
 
+    float getWeight() const;
+    float getWeight( UnitOfWeight weightUnit ) const;
+
+    void dump();
+
 
 public: //validation
     static bool validateWeight(const float newWeight);
+
+public:
+    bool operator==( const Weight& rhs_Weight ) const;
+    bool operator<(const Weight &rhs_Weight) const;
+    Weight & operator+= (float rhs_addToWeight );
+
 };

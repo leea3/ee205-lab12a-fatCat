@@ -15,4 +15,6 @@ using namespace std;
 
 int main(){
     cout << "Hello World!" << endl;
+    Weight testing = Weight(1.0, Weight::POUND, 40.0);
+    testing.dump();
 }
