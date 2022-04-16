@@ -16,13 +16,41 @@
 const float Weight::KILOS_IN_A_POUND = 0.453592;
 const float Weight::SLUGS_IN_A_POUND = 0.031081;
 
-Weight::Weight () {}
-Weight::Weight (float newWeight){}
-Weight::Weight (UnitOfWeight newUnitOfWeight) noexcept{}
-Weight::Weight (float newWeight, UnitOfWeight newUnitOfWeight){}
-Weight::Weight (float newWeight, float newMaxWeight){}
-Weight::Weight (UnitOfWeight newUnitOfWeight, float newMaxWeight){}
-Weight::Weight (float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight){}
+Weight::Weight () {
+    bIsKnown     = false;
+    bHasMax      = false;
+    unitOfWeight = KILO;
+    weight       = -1;
+    maxWeight    = -1;
+}
+
+Weight::Weight (float newWeight) : Weight() {
+    assert( validateWeight(newWeight) );
+    setWeight( newWeight );
+}
+
+Weight::Weight (UnitOfWeight newUnitOfWeight) noexcept{
+    unitOfWeight = newUnitOfWeight;
+}
+
+Weight::Weight (float newWeight, UnitOfWeight newUnitOfWeight) : Weight() {
+    assert( validateWeight(newWeight) );
+    setWeight( newWeight , newUnitOfWeight );
+}
+
+Weight::Weight (float newWeight, float newMaxWeight) : Weight(newWeight){
+    setMaxWeight( newMaxWeight );
+    assert( validateWeight(weight) );
+}
+
+Weight::Weight (UnitOfWeight newUnitOfWeight, float newMaxWeight) : Weight(newUnitOfWeight){
+    setMaxWeight( newMaxWeight );
+}
+
+Weight::Weight (float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight) : Weight(newWeight,newUnitOfWeight){
+    setMaxWeight( newMaxWeight );
+    assert( validateWeight(weight) );
+}
 
 float Weight::fromKilogramToPound(const float kilogram) noexcept {
     return kilogram / KILOS_IN_A_POUND;
@@ -76,3 +104,16 @@ bool Weight::validateWeight(const float newWeight) {
 
     return true;
 }
+
+void Weight::setWeight(float newWeight) {
+    Weight::weight = newWeight; //in kilograms
+}
+
+void Weight::setWeight(float newWeight, UnitOfWeight weightUnit ){
+    Weight::weight = convertWeight( newWeight , weightUnit , unitOfWeight );
+}
+
+void Weight::setMaxWeight(float newMaxWeight) {
+    Weight::maxWeight = newMaxWeight;
+}
+

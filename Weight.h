@@ -51,14 +51,19 @@ public: //constructors
 
 public: //static methods
     static float fromKilogramToPound(const float kilogram) noexcept;
-
     static float fromPoundToKilogram(float pound) noexcept;
-
     static float fromSlugToPound(float slug) noexcept;
-
     static float fromPoundToSlug(float pound) noexcept;
 
     static float convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept;
+
+    void defaultWeight();
+
+public: //getters and setters
+    void setWeight(float newWeight);
+    void setWeight(float newWeight, UnitOfWeight weightUnit );
+    void setMaxWeight(float maxWeight);
+
 
 public: //validation
     static bool validateWeight(const float newWeight);
