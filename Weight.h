@@ -14,7 +14,9 @@
 class Weight {
 public:
     //units enum
-    enum UnitOfWeight { POUND , KILO , SLUG };
+    enum UnitOfWeight {
+        POUND, KILO, SLUG
+    };
 
     //conversion constants
     static const float KILOS_IN_A_POUND;
@@ -27,17 +29,30 @@ public:
 
 public: //constructors
     Weight();
-    Weight (float newWeight);
-    Weight (UnitOfWeight newUnitOfWeight) noexcept;
-    Weight (float newWeight, UnitOfWeight newUnitOfWeight);
-    Weight (float newWeight, float newMaxWeight);
-    Weight (UnitOfWeight newUnitOfWeight, float newMaxWeight);
-    Weight (float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight);
+
+    Weight(float newWeight);
+
+    Weight(UnitOfWeight newUnitOfWeight) noexcept;
+
+    Weight(float newWeight, UnitOfWeight newUnitOfWeight);
+
+    Weight(float newWeight, float newMaxWeight);
+
+    Weight(UnitOfWeight newUnitOfWeight, float newMaxWeight);
+
+    Weight(float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight);
 
 public: //static methods
-    static float fromKilogramToPound ( const float kilogram ) noexcept;
-    static float fromPoundToKilogram ( float pound) noexcept;
-    static float fromSlugToPound     ( float slug) noexcept;
-    static float fromPoundToSlug     ( float pound) noexcept;
-    static float convertWeight       ( float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept;
+    static float fromKilogramToPound(const float kilogram) noexcept;
+
+    static float fromPoundToKilogram(float pound) noexcept;
+
+    static float fromSlugToPound(float slug) noexcept;
+
+    static float fromPoundToSlug(float pound) noexcept;
+
+    static float convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept;
+
+public: //validation
+    static bool validateWeight(const float newWeight);
 };

@@ -69,3 +69,10 @@ float Weight::convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeigh
     }
     assert( 0 ); // we should never get here
 }
+
+bool Weight::validateWeight(const float newWeight) {
+    if( newWeight <= 0.0 ) //cats cannot have zero/negative weight
+        return false;
+
+    return true;
+}
