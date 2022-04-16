@@ -27,6 +27,13 @@ public:
     static const std::string KILO_LABEL;
     static const std::string SLUG_LABEL;
 
+private:
+    bool  bIsKnown;
+    bool  bHasMax;
+    enum  UnitOfWeight unitOfWeight;
+    float weight;
+    float maxWeight;
+
 public: //constructors
     Weight();
 
