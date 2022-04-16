@@ -34,4 +34,10 @@ public: //constructors
     Weight (UnitOfWeight newUnitOfWeight, float newMaxWeight);
     Weight (float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight);
 
+public: //static methods
+    static float fromKilogramToPound ( const float kilogram ) noexcept;
+    static float fromPoundToKilogram ( float pound) noexcept;
+    static float fromSlugToPound     ( float slug) noexcept;
+    static float fromPoundToSlug     ( float pound) noexcept;
+    static float convertWeight       ( float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept;
 };
