@@ -18,6 +18,8 @@ public:
         POUND, KILO, SLUG
     };
 
+    static const float UNKNOWN_WEIGHT;
+
     //conversion constants
     static const float KILOS_IN_A_POUND;
     static const float SLUGS_IN_A_POUND;
@@ -28,11 +30,11 @@ public:
     static const std::string SLUG_LABEL;
 
 private:
-    bool  bIsKnown;
-    bool  bHasMax;
-    enum  UnitOfWeight unitOfWeight;
-    float weight;
-    float maxWeight;
+    bool  bIsKnown = false;
+    bool  bHasMax = false;
+    enum  UnitOfWeight unitOfWeight = POUND;
+    float weight = UNKNOWN_WEIGHT;
+    float maxWeight = UNKNOWN_WEIGHT;
 
 public: //constructors
     Weight();
@@ -51,8 +53,6 @@ public: //static methods
 
     static float convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept;
 
-    void defaultWeight();
-
 public: //getters and setters
     void setWeight(float newWeight);
     void setWeight(float newWeight, UnitOfWeight weightUnit );
@@ -60,12 +60,17 @@ public: //getters and setters
 
     float getWeight() const;
     float getWeight( UnitOfWeight weightUnit ) const;
+    float getMaxWeight() const noexcept;
+    bool  getWeightKnown() const noexcept;
+    bool  getHasMax()      const noexcept;
+    UnitOfWeight getUnitOfWeight() const noexcept;
 
     void dump();
 
 
 public: //validation
-    static bool validateWeight(const float newWeight);
+    static bool validateWeight(const float newWeight) noexcept;
+    bool validate() const;
 
 public:
     bool operator==( const Weight& rhs_Weight ) const;
