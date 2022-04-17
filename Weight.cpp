@@ -162,6 +162,7 @@ void Weight::setWeight(float newWeight) {
         Weight::weight = newWeight; //in kilograms
     } else
         Weight::weight = UNKNOWN_WEIGHT;
+    validate();
 }
 
 void Weight::setWeight(float newWeight, UnitOfWeight weightUnit ){
@@ -174,6 +175,7 @@ void Weight::setWeight(float newWeight, UnitOfWeight weightUnit ){
         Weight::weight = convertWeight(newWeight, weightUnit, unitOfWeight);
     }else
         Weight::weight = UNKNOWN_WEIGHT;
+    validate();
 }
 
 void Weight::setMaxWeight(float newMaxWeight) {
@@ -182,6 +184,7 @@ void Weight::setMaxWeight(float newMaxWeight) {
         assert(0);
     bHasMax = true;
     Weight::maxWeight = newMaxWeight;
+    validate();
 }
 
 float Weight::getWeight() const {
